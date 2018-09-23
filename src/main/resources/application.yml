@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: ${APP_NAME:instance}
+
+  cloud:
+    stream:
+      instanceIndex: ${INSTANCE_INDEX:0}
+
+      kafka:
+        binder:
+          brokers: localhost:9092
+
+      bindings:
+        greetings-in:
+          destination: greetings
+          contentType: application/json
+
+        group-greetings-in:
+          group: myGroup
+          destination: greetings
+          contentType: application/json
+
+        part-greetings-in:
+          group: partGroup
+          destination: partGreetings
+          contentType: application/json
+          consumer:
+            partitioned: true
+
+server:
+  port: ${PORT:8081}
+
