@@ -27,6 +27,13 @@ spring:
           consumer:
             partitioned: true
 
+        part-greetings-in2:
+          group: partGroup2
+          destination: partGreetings
+          contentType: application/json
+          consumer:
+            partitioned: true
+
 server:
   port: ${PORT:8081}
 
